@@ -1,0 +1,55 @@
+<div style="border: 1px solid gray; padding: 10px">
+
+<h1>Block Randomizer</h1>
+<p>Clicking on the "randomize button" will update the blocks above as well as refreshing the screen.</p>
+
+<div class="btn-container">
+    <button id="random">Randomize Blocks</button>
+
+</div>
+<div id="block-container"></div>
+</div>
+<script>
+    const blockContainer = document.getElementById("block-container");
+    const randomBlocks = document.getElementById("random");
+
+    const getRandomNumber = () => {
+        return Math.floor(Math.random() * 256);
+    }
+
+    const getRandomWidth = () => {
+        return Math.floor(Math.random() * 301) + 200;
+    }
+
+    let randomNumberOfBlocks = () => {
+        return Math.floor(Math.random() * 3) + 1;
+    }
+
+    const adjustBlock = (id) => {
+        id.style.width = `${getRandomWidth()}px`;
+        id.style.height = "100px";
+        id.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+    }
+
+    const createRandomBlocks = () => {
+            for(let i = 0; i < randomNumberOfBlocks(); i++) {
+            let createBlock = document.createElement("div");
+            createBlock.style.width = `${getRandomWidth()}px`;
+            createBlock.style.height = "100px";
+            createBlock.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+            
+            blockContainer.appendChild(createBlock);
+        }
+    }
+
+    createRandomBlocks();
+
+    randomBlocks.addEventListener("click", () => {
+        blockContainer.replaceChildren();
+        createRandomBlocks();
+
+    })
+
+
+
+</script>

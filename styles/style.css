@@ -6,7 +6,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--color);
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -26,6 +26,13 @@ li {
 
 
 #block-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+#circle-container {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;

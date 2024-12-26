@@ -11,17 +11,73 @@
         <h1  class="header">Multi-page Application <br /> VS. <br/> Single-page Application using AJAX</h1>
         <h2 style="color: blueviolet"> This is based off of my article: <a href="https://web-portfolio-ed444.web.app/#blog/website" target="_blank">Ajax</a></h2>
         <p>To see the difference between multi-page applications and single-page applications rendering style, click the links below.</p>
+        <p style="font-style: italic;">Note... this was not built using CSS display styling but with JavaScript and AJAX fetch</p>
     </header>
-
+    <main>
+    </main>
     <nav>
         <ul>
             <li><a href="pages/block-randomizer.html">MPA - Block Randomizer</a></li>
-            <li><a href="pages/page2.html">MPA - Page 2</li>
-            <li><a>AJAX - Render Page 1</a></li>
-            <li><a>AJAX - Render Page 2</a></li>
+            <li><a href="pages/circle-randomizer.html">MPA - Circle Randomizer</li>
+            <li><a data-route="block-randomizer">AJAX - Block Randomizer</a></li>
+            <li><a data-route="circle-randomizer">AJAX - Circle Randomizer</a></li>
         </ul>
     </nav>
-    <main>
-    </main>
+
+    <script>
+        const listItem = document.querySelectorAll("li");
+        const main = document.querySelector("main");
+
+        const getData = async (route) => {
+            if (route) {
+                try {
+                const response = await fetch(`pages/${route}-spa.html`); 
+                const data = await response.text(); 
+
+                // Remove existing scripts within the main content
+                const scriptTags = main.querySelectorAll("script");
+                scriptTags.forEach(script => script.remove()); 
+                main.innerHTML = ""; 
+
+                // Append fetched HTML to main content
+                main.innerHTML = data;
+
+                // Re-execute scripts within the fetched HTML
+                const newScripts = main.querySelectorAll("script");
+                newScripts.forEach(script => {
+                    const newScript = document.createElement("script");
+                    if(script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = `(() => {
+                            ${script.textContent}
+                        })()`;
+                    }
+                    document.body.appendChild(newScript);
+                });
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+            }
+
+        };
+
+        listItem.forEach(item => {
+            const links = item.querySelectorAll("a"); 
+            links.forEach(link => { 
+                if (link.hasAttribute("data-route")) { 
+                    link.addEventListener("click", async (event) => { 
+                        event.preventDefault(); // Prevent default link behavior
+                        await getData(link.getAttribute("data-route")); 
+                    });
+                }
+            });
+        });
+
+        // Load initial content (e.g., block-randomizer)
+        getData(null); 
+
+    </script>
 </body>
 </html>

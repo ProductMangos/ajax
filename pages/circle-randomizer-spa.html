@@ -1,0 +1,57 @@
+<div style="border: 1px solid gray; padding: 10px">
+    <h1>Circle Randomizer</h1>
+    <p>Clicking on the "randomize button" will update the blocks above as well as refreshing the screen.</p>
+    
+    <div class="btn-container">
+        <button id="random">Randomize Circles</button>
+    
+    </div>
+    <div id="circle-container"></div>
+</div>
+
+
+<script>
+    const circleContainer = document.getElementById("circle-container");
+    const randomBlocks = document.getElementById("random");
+
+    const getRandomNumber = () => {
+        return Math.floor(Math.random() * 256);
+    }
+
+    const getRandomWidth = () => {
+        return Math.floor(Math.random() * 100) + 200;
+    }
+
+    let randomNumberOfCircles = () => {
+        return Math.floor(Math.random() * 3) + 1;
+    }
+
+    const adjustBlock = (id) => {
+        id.style.width = `${getRandomWidth()}px`;
+        id.style.height = "100px";
+        id.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+    }
+
+    const createRandomBlocks = () => {
+            for(let i = 0; i < randomNumberOfCircles(); i++) {
+            const widthHeightNumber = `${getRandomWidth()}px`
+            let createCircle = document.createElement("div");
+            createCircle.style.width = widthHeightNumber;
+            createCircle.style.height = widthHeightNumber;
+            createCircle.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+            createCircle.style.borderRadius = "50%"
+            circleContainer.appendChild(createCircle);
+        }
+    }
+
+    createRandomBlocks();
+
+    randomBlocks.addEventListener("click", () => {
+        circleContainer.replaceChildren();
+        createRandomBlocks();
+
+    })
+
+
+
+</script>
