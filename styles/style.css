@@ -1,0 +1,39 @@
+:root {
+    --bg-color: #36454f;
+    --color: #ffffff
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav {
+    margin: 0 auto;
+}
+
+
+ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+li {
+    margin: 0 20px;
+}
+
+
+#block-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+#random {
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+}

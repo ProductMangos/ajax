@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <h2>This is page 1</h2>
+    <h3>To test the interactivity of the page: click on the button below:</h3>
+    <button id="random">Randomize Blocks</button>
+    <div id="block-container"></div>
+    <p>Here are some random blocks we created for the page 1 example. Clicking on the "randomize button" will update the blocks above as well as refreshing the screen.</p>
+    <p></p>
+
+
+    <a href="../index.html">Go back</a>
+    <script>
+        const blockContainer = document.getElementById("block-container");
+        const randomBlocks = document.getElementById("random");
+
+        const getRandomNumber = () => {
+            return Math.floor(Math.random() * 256);
+        }
+
+        const getRandomWidth = () => {
+            return Math.floor(Math.random() * 301) + 200;
+        }
+
+        let randomNumberOfBlocks = () => {
+            return Math.floor(Math.random() * 10) + 1;
+        }
+
+        const adjustBlock = (id) => {
+            id.style.width = `${getRandomWidth()}px`;
+            id.style.height = "100px";
+            id.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+        }
+
+        const createRandomBlocks = () => {
+                for(let i = 0; i < randomNumberOfBlocks(); i++) {
+                let createBlock = document.createElement("div");
+                createBlock.style.width = `${getRandomWidth()}px`;
+                createBlock.style.height = "100px";
+                createBlock.style.background = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+                
+                blockContainer.appendChild(createBlock);
+            }
+        }
+
+        createRandomBlocks();
+
+        randomBlocks.addEventListener("click", () => {
+            blockContainer.replaceChildren();
+            createRandomBlocks();
+
+        })
+
+
+
+    </script>
+</body>
+</html>
