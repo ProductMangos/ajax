@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 1</title>
+    <title>Block Randomizer</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <h2>This is page 1</h2>
-    <h3>To test the interactivity of the page: click on the button below:</h3>
-    <button id="random">Randomize Blocks</button>
+    <h1>Block Randomizer</h1>
+    <p>Clicking on the "randomize button" will update the blocks above as well as refreshing the screen.</p>
+
+    <div class="btn-container">
+        <button id="random">Randomize Blocks</button>
+
+    </div>
     <div id="block-container"></div>
-    <p>Here are some random blocks we created for the page 1 example. Clicking on the "randomize button" will update the blocks above as well as refreshing the screen.</p>
-    <p></p>
 
+    <div class="back-container">
+        <a href="../index.html" class="go-back">Go Back Home</a>
 
-    <a href="../index.html">Go back</a>
+    </div>
     <script>
         const blockContainer = document.getElementById("block-container");
         const randomBlocks = document.getElementById("random");

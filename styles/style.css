@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #36454f;
+    --bg-color: #333333;
     --color: #ffffff
 }
 
@@ -11,7 +11,7 @@ body {
 }
 
 nav {
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 
@@ -36,4 +36,29 @@ li {
     margin: 20px auto;
     padding: 10px 20px;
     text-align: center;
+}
+
+.btn-container {
+    margin: 0 auto;
+    display: flex;
+}
+
+.back-container {
+    display: flex;
+    margin: 20px 0;
+}
+a {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+header {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header {
+    text-align: center; 
+    line-height: 3rem;
 }
