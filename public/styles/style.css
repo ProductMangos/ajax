@@ -69,3 +69,8 @@ header {
     text-align: center; 
     line-height: 3rem;
 }
+
+.route {
+    cursor: pointer;
+    text-decoration: underline;
+}
